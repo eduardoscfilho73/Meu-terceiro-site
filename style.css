@@ -1,0 +1,1547 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --gold: #e2c06a;
+    --gold-light: #f5dc96;
+    --cream: #fff6df;
+
+    --bg: #070b11;
+    --panel: rgba(8, 12, 18, 0.88);
+    --panel-light: rgba(255, 255, 255, 0.05);
+
+    --text: #f5efe2;
+    --muted: #cfc8bb;
+
+    --border: rgba(226, 192, 106, 0.30);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Georgia, "Times New Roman", serif;
+    overflow-x: hidden;
+}
+
+
+/* =====================================
+   FUNDO GERAL
+===================================== */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(5, 8, 13, 0.94),
+            rgba(5, 8, 13, 0.72) 38%,
+            rgba(5, 8, 13, 0.48)
+        ),
+        linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.68),
+            rgba(0, 0, 0, 0.16)
+        ),
+        url("jesus.png") center / cover no-repeat;
+
+    z-index: -10;
+}
+
+
+/* =====================================
+   UTILIDADES
+===================================== */
+
+.hidden {
+    display: none !important;
+}
+
+button,
+select,
+input {
+    font: inherit;
+}
+
+
+/* =====================================
+   MENU MOBILE
+===================================== */
+
+.mobile-menu {
+    display: none;
+
+    position: fixed;
+    left: 14px;
+    top: 14px;
+
+    width: 46px;
+    height: 46px;
+
+    border: 1px solid var(--gold);
+    border-radius: 10px;
+
+    background: #0c121a;
+    color: white;
+
+    font-size: 22px;
+
+    z-index: 100;
+    cursor: pointer;
+}
+
+
+/* =====================================
+   MENU LATERAL
+===================================== */
+
+#sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    width: 325px;
+
+    padding: 20px 15px;
+
+    background: rgba(7, 11, 17, 0.92);
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    border-right: 1px solid var(--border);
+
+    box-shadow:
+        8px 0 35px rgba(0, 0, 0, 0.32);
+
+    z-index: 50;
+}
+
+
+/* LOGO */
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    text-decoration: none;
+
+    padding: 8px 7px 19px;
+
+    color: var(--cream);
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.10);
+}
+
+.cross {
+    color: var(--gold);
+    font-size: 36px;
+}
+
+.brand b {
+    display: block;
+
+    font-size: 21px;
+}
+
+.brand small {
+    display: block;
+
+    margin-top: 4px;
+
+    color: #aaa49a;
+
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+}
+
+
+/* SCROLL */
+
+.side-scroll {
+    height: calc(100vh - 88px);
+
+    overflow-y: auto;
+
+    padding-bottom: 25px;
+}
+
+.side-scroll::-webkit-scrollbar {
+    width: 5px;
+}
+
+.side-scroll::-webkit-scrollbar-thumb {
+    background: rgba(226, 192, 106, 0.45);
+
+    border-radius: 10px;
+}
+
+
+/* TÍTULO */
+
+.side-title {
+    margin: 20px 7px 11px;
+
+    color: var(--gold);
+
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+
+    letter-spacing: 2px;
+}
+
+
+/* =====================================
+   BOTÕES DOS SANTOS
+===================================== */
+
+.saint-btn {
+    position: relative;
+
+    width: 100%;
+    height: 94px;
+
+    margin-bottom: 10px;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.12);
+
+    border-radius: 14px;
+
+    background: #121820;
+    color: white;
+
+    cursor: pointer;
+
+    text-align: left;
+
+    box-shadow:
+        0 7px 18px rgba(0, 0, 0, 0.24);
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.saint-btn:hover {
+    transform: translateX(4px);
+
+    border-color: var(--gold);
+
+    box-shadow:
+        0 9px 24px rgba(0, 0, 0, 0.35);
+}
+
+.saint-btn.active {
+    border-color: var(--gold);
+
+    box-shadow:
+        0 0 0 1px rgba(226, 192, 106, 0.20),
+        0 8px 24px rgba(0, 0, 0, 0.40);
+}
+
+.saint-btn.special {
+    border-color: rgba(226, 192, 106, 0.65);
+}
+
+
+/* IMAGEM DOS BANNERS */
+
+.saint-btn img {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center 30%;
+}
+
+
+/* JESUS */
+
+.saint-btn[data-saint="jesus"] img {
+    object-position: center 45%;
+}
+
+
+/* ESCURECIMENTO */
+
+.saint-btn::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.88) 68%
+        );
+}
+
+
+/* TEXTO */
+
+.saint-btn span {
+    position: absolute;
+
+    z-index: 2;
+
+    right: 12px;
+    bottom: 13px;
+
+    max-width: 65%;
+
+    text-align: right;
+
+    font-size: 16px;
+
+    text-shadow:
+        0 2px 6px black;
+}
+
+.saint-btn small {
+    display: block;
+
+    margin-top: 3px;
+
+    color: #ded8ca;
+
+    font-family: Arial, sans-serif;
+    font-size: 9px;
+}
+
+
+/* =====================================
+   BOTÃO DA BÍBLIA
+===================================== */
+
+.bible-side {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin-top: 15px;
+
+    padding: 14px;
+
+    border: 1px solid var(--gold);
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(226, 192, 106, 0.17),
+            rgba(255, 255, 255, 0.03)
+        );
+
+    color: var(--cream);
+
+    cursor: pointer;
+
+    text-align: left;
+
+    box-shadow:
+        0 0 22px rgba(226, 192, 106, 0.09);
+
+    transition: 0.2s ease;
+}
+
+.bible-side:hover {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(226, 192, 106, 0.26),
+            rgba(255, 255, 255, 0.05)
+        );
+
+    transform: translateY(-2px);
+}
+
+.book-icon {
+    font-size: 31px;
+}
+
+.bible-side b {
+    display: block;
+
+    font-size: 17px;
+}
+
+.bible-side small {
+    color: #d5cec0;
+
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+}
+
+
+/* =====================================
+   CONTEÚDO PRINCIPAL
+===================================== */
+
+main {
+    margin-left: 325px;
+
+    min-height: 100vh;
+
+    padding:
+        25px
+        clamp(18px, 5vw, 76px)
+        55px;
+}
+
+
+/* =====================================
+   CABEÇALHO
+===================================== */
+
+header {
+    max-width: 1120px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    color: var(--gold);
+
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+
+    letter-spacing: 3px;
+}
+
+header button {
+    border: 1px solid var(--border);
+
+    border-radius: 9px;
+
+    padding: 10px 14px;
+
+    background: rgba(7, 11, 17, 0.72);
+
+    color: white;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+header button:hover {
+    border-color: var(--gold);
+
+    background:
+        rgba(226, 192, 106, 0.12);
+}
+
+
+/* =====================================
+   PÁGINA INICIAL
+===================================== */
+
+.hero {
+    position: relative;
+
+    max-width: 1120px;
+
+    height: min(68vh, 650px);
+    min-height: 470px;
+
+    margin: auto;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(226, 192, 106, 0.42);
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 20px 65px rgba(0, 0, 0, 0.50);
+}
+
+.hero img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    object-position: center 43%;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            0deg,
+            rgba(3, 6, 10, 0.92),
+            transparent 65%
+        ),
+        linear-gradient(
+            90deg,
+            rgba(3, 6, 10, 0.50),
+            transparent 55%
+        );
+}
+
+.hero-text {
+    position: absolute;
+
+    left: 35px;
+    right: 35px;
+    bottom: 32px;
+
+    z-index: 2;
+
+    text-shadow:
+        0 3px 12px black;
+}
+
+.hero-text small {
+    color: var(--gold);
+
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+
+    letter-spacing: 2px;
+}
+
+.hero-text h1 {
+    margin: 7px 0 10px;
+
+    font-size:
+        clamp(40px, 6vw, 70px);
+
+    line-height: 1;
+
+    font-weight: 500;
+}
+
+.hero-text p {
+    max-width: 700px;
+
+    color: #eee7d8;
+
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+
+    line-height: 1.65;
+}
+
+
+/* FRASE */
+
+.reflection {
+    max-width: 820px;
+
+    margin: 33px auto 0;
+
+    padding: 28px 20px;
+
+    text-align: center;
+
+    border-top:
+        1px solid rgba(226, 192, 106, 0.55);
+
+    border-bottom:
+        1px solid rgba(226, 192, 106, 0.55);
+
+    background:
+        rgba(7, 11, 17, 0.62);
+
+    backdrop-filter: blur(8px);
+}
+
+.reflection small {
+    color: var(--gold);
+
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+
+    letter-spacing: 3px;
+}
+
+.reflection p {
+    margin: 12px 0 0;
+
+    color: #fff0bc;
+
+    font-size:
+        clamp(22px, 3vw, 34px);
+
+    font-style: italic;
+
+    line-height: 1.25;
+}
+
+
+/* APRESENTAÇÃO */
+
+.home-intro {
+    max-width: 760px;
+
+    margin: 35px auto 0;
+
+    padding: 30px;
+
+    text-align: center;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.10);
+
+    border-radius: 18px;
+
+    background:
+        rgba(8, 12, 18, 0.75);
+
+    backdrop-filter: blur(9px);
+}
+
+.home-intro > span {
+    color: var(--gold);
+
+    font-size: 26px;
+}
+
+.home-intro h2 {
+    margin: 10px 0 15px;
+
+    color: var(--gold-light);
+
+    font-size: 27px;
+
+    font-weight: 500;
+}
+
+.home-intro p {
+    margin-top: 10px;
+
+    color: var(--muted);
+
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+
+    line-height: 1.75;
+}
+
+
+/* =====================================
+   BANNER DOS SANTOS
+===================================== */
+
+.saint-banner {
+    position: relative;
+
+    max-width: 1120px;
+    height: 420px;
+
+    margin: auto;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(226, 192, 106, 0.42);
+
+    border-radius:
+        23px 23px 0 0;
+
+    box-shadow:
+        0 18px 50px rgba(0, 0, 0, 0.45);
+}
+
+.saint-banner img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    object-position: center 31%;
+}
+
+#saintPage[data-saint="jesus"]
+.saint-banner img {
+    object-position: center 45%;
+}
+
+#saintPage[data-saint="pedro"]
+.saint-banner img {
+    object-position: center 48%;
+}
+
+#saintPage[data-saint="francisco"]
+.saint-banner img {
+    object-position: center 50%;
+}
+
+.banner-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            0deg,
+            rgba(3, 6, 10, 0.92),
+            transparent 65%
+        ),
+        linear-gradient(
+            90deg,
+            rgba(3, 6, 10, 0.45),
+            transparent 60%
+        );
+}
+
+.banner-text {
+    position: absolute;
+
+    left: 35px;
+    right: 35px;
+    bottom: 30px;
+
+    z-index: 2;
+
+    text-shadow:
+        0 3px 12px black;
+}
+
+.banner-text small {
+    color: var(--gold);
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+}
+
+.banner-text h1 {
+    margin: 7px 0 9px;
+
+    font-size:
+        clamp(38px, 5vw, 62px);
+
+    font-weight: 500;
+}
+
+.banner-text p {
+    max-width: 760px;
+
+    color: #eee7da;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+}
+
+
+/* =====================================
+   CONTEÚDO DO SANTO
+===================================== */
+
+.saint-content {
+    max-width: 1120px;
+
+    margin: auto;
+
+    padding: 28px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.10);
+
+    border-top: none;
+
+    border-radius:
+        0 0 22px 22px;
+
+    background:
+        rgba(8, 12, 18, 0.90);
+
+    backdrop-filter: blur(12px);
+}
+
+
+/* INFORMAÇÕES */
+
+.facts {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 10px;
+}
+
+.facts div {
+    padding: 16px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.09);
+
+    border-radius: 12px;
+
+    background:
+        rgba(255, 255, 255, 0.035);
+}
+
+.facts small {
+    color: var(--gold);
+
+    font-family: Arial, sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 1.5px;
+}
+
+.facts b {
+    display: block;
+
+    margin-top: 7px;
+
+    font-size: 14px;
+
+    line-height: 1.4;
+}
+
+
+/* TEXTOS */
+
+.saint-content article {
+    margin-top: 28px;
+}
+
+.saint-content article h2,
+.prayer h2 {
+    margin-bottom: 10px;
+
+    color: var(--gold-light);
+
+    font-size: 22px;
+
+    font-weight: 500;
+}
+
+.saint-content article p {
+    color: #ddd6c9;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 15px;
+
+    line-height: 1.8;
+}
+
+
+/* COLUNAS */
+
+.two-columns {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 12px;
+
+    margin-top: 5px;
+}
+
+.two-columns article {
+    padding: 18px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.09);
+
+    border-radius: 13px;
+
+    background:
+        rgba(255, 255, 255, 0.035);
+}
+
+
+/* ORAÇÃO */
+
+.prayer {
+    margin-top: 25px;
+
+    padding: 25px;
+
+    text-align: center;
+
+    border:
+        1px solid rgba(226, 192, 106, 0.35);
+
+    border-radius: 14px;
+
+    background:
+        rgba(226, 192, 106, 0.055);
+}
+
+.prayer p {
+    max-width: 760px;
+
+    margin: auto;
+
+    color: #eee6d8;
+
+    font-size: 15px;
+
+    font-style: italic;
+
+    line-height: 1.8;
+}
+
+
+/* =====================================
+   BÍBLIA
+===================================== */
+
+.bible-header {
+    max-width: 1120px;
+
+    margin: auto;
+
+    padding: 35px;
+
+    text-align: center;
+
+    border:
+        1px solid rgba(226, 192, 106, 0.40);
+
+    border-radius: 22px;
+
+    background:
+        rgba(8, 12, 18, 0.82);
+
+    backdrop-filter: blur(10px);
+}
+
+.big-book {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 48px;
+}
+
+.bible-header > small {
+    color: var(--gold);
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    font-weight: bold;
+
+    letter-spacing: 3px;
+}
+
+.bible-header h1 {
+    margin: 8px 0 12px;
+
+    font-size:
+        clamp(38px, 6vw, 62px);
+
+    font-weight: 500;
+}
+
+.bible-header p {
+    max-width: 760px;
+
+    margin: auto;
+
+    color: #ddd7ca;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+
+/* CONTROLES */
+
+.bible-controls {
+    max-width: 1120px;
+
+    margin: 15px auto;
+
+    display: grid;
+
+    grid-template-columns:
+        2fr 1fr 1fr auto;
+
+    gap: 10px;
+
+    padding: 15px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.10);
+
+    border-radius: 14px;
+
+    background:
+        rgba(8, 12, 18, 0.90);
+}
+
+.bible-controls label {
+    color: #d7bc72;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
+}
+
+.bible-controls select,
+.bible-controls input {
+    width: 100%;
+
+    margin-top: 6px;
+
+    padding: 12px;
+
+    border:
+        1px solid #504b3c;
+
+    border-radius: 9px;
+
+    background: #111821;
+
+    color: white;
+
+    outline: none;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 14px;
+}
+
+.bible-controls select:focus,
+.bible-controls input:focus {
+    border-color: var(--gold);
+}
+
+.bible-controls button {
+    align-self: end;
+
+    height: 42px;
+
+    padding: 0 18px;
+
+    border:
+        1px solid var(--gold);
+
+    border-radius: 9px;
+
+    background: #d3ad4f;
+
+    color: #111;
+
+    font-family: Arial, sans-serif;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.bible-controls button:hover {
+    background: #f0cf72;
+}
+
+
+/* REFERÊNCIA */
+
+.reference {
+    max-width: 1120px;
+
+    margin: 0 auto 15px;
+
+    padding: 11px 14px;
+
+    border-left:
+        3px solid var(--gold);
+
+    background:
+        rgba(226, 192, 106, 0.09);
+
+    color: #ffedb5;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 14px;
+}
+
+
+/* =====================================
+   LEITOR BÍBLICO
+===================================== */
+
+.scripture-card {
+    max-width: 1120px;
+
+    margin: auto;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(226, 192, 106, 0.32);
+
+    border-radius: 18px;
+
+    background:
+        rgba(10, 15, 22, 0.97);
+
+    box-shadow:
+        0 18px 50px rgba(0, 0, 0, 0.35);
+}
+
+.scripture-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 16px;
+
+    padding: 20px 24px;
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.08);
+}
+
+.scripture-top small {
+    color: var(--gold);
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+}
+
+.scripture-top h2 {
+    margin-top: 4px;
+
+    font-size: 31px;
+
+    font-weight: 500;
+}
+
+#loadingState {
+    color: #aaa;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 11px;
+}
+
+
+/* VERSÍCULOS */
+
+.verses {
+    max-width: 900px;
+
+    margin: auto;
+
+    padding: 25px;
+}
+
+.verse {
+    display: flex;
+
+    gap: 13px;
+
+    padding: 9px 12px;
+
+    border-radius: 9px;
+
+    color: #f1eadc;
+
+    font-size: 18px;
+
+    line-height: 1.72;
+
+    transition: 0.2s ease;
+}
+
+.verse:hover {
+    background:
+        rgba(255, 255, 255, 0.03);
+}
+
+.verse-number {
+    flex: 0 0 31px;
+
+    text-align: right;
+
+    color: #d4b453;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    line-height: 1.8;
+}
+
+
+/* VERSÍCULO SELECIONADO */
+
+.verse.selected {
+    color: #fff7dc;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(226, 192, 106, 0.20),
+            rgba(226, 192, 106, 0.05)
+        );
+
+    box-shadow:
+        inset 3px 0 var(--gold);
+}
+
+.verse.selected .verse-number {
+    color: #ffe497;
+
+    font-size: 14px;
+}
+
+
+/* CARREGANDO / ERRO */
+
+.loading,
+.reader-error {
+    padding: 34px 20px;
+
+    text-align: center;
+
+    color: #ccc;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 14px;
+
+    line-height: 1.65;
+}
+
+.reader-error {
+    color: #ffd0aa;
+}
+
+
+/* NOTA DA BÍBLIA */
+
+.bible-note {
+    max-width: 1120px;
+
+    margin: 16px auto 0;
+
+    display: flex;
+
+    gap: 13px;
+
+    padding: 18px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.10);
+
+    border-radius: 13px;
+
+    background:
+        rgba(8, 12, 18, 0.77);
+
+    color: #cfc8bb;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 12px;
+
+    line-height: 1.65;
+}
+
+.bible-note > span {
+    color: var(--gold);
+
+    font-size: 24px;
+}
+
+.bible-note b {
+    color: var(--gold-light);
+
+    font-family: Georgia, serif;
+
+    font-size: 17px;
+}
+
+
+/* =====================================
+   TABLETS / MOBILE
+===================================== */
+
+@media (max-width: 900px) {
+
+    .mobile-menu {
+        display: block;
+    }
+
+
+    #sidebar {
+        width: min(88vw, 335px);
+
+        transform: translateX(-105%);
+
+        transition:
+            transform 0.25s ease;
+
+        box-shadow:
+            15px 0 45px rgba(0, 0, 0, 0.70);
+    }
+
+
+    #sidebar.open {
+        transform: translateX(0);
+    }
+
+
+    main {
+        margin-left: 0;
+
+        padding-top: 72px;
+    }
+
+
+    .hero {
+        height: 520px;
+    }
+
+
+    .facts {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .bible-controls {
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+
+    .bible-controls label:first-child {
+        grid-column: 1 / -1;
+    }
+
+
+    .bible-controls button {
+        grid-column: 1 / -1;
+    }
+}
+
+
+/* =====================================
+   CELULARES
+===================================== */
+
+@media (max-width: 600px) {
+
+    main {
+        padding:
+            70px 10px 35px;
+    }
+
+
+    header {
+        letter-spacing: 1px;
+
+        font-size: 9px;
+    }
+
+
+    header button {
+        padding: 8px 9px;
+
+        font-size: 11px;
+    }
+
+
+    .hero {
+        height: 430px;
+        min-height: 430px;
+
+        border-radius: 18px;
+    }
+
+
+    .hero img {
+        object-position: center;
+    }
+
+
+    .hero-text {
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+    }
+
+
+    .hero-text h1 {
+        font-size: 38px;
+    }
+
+
+    .hero-text p {
+        font-size: 14px;
+    }
+
+
+    .reflection {
+        margin-top: 22px;
+
+        padding: 22px 15px;
+    }
+
+
+    .reflection p {
+        font-size: 23px;
+    }
+
+
+    .home-intro {
+        padding: 22px 16px;
+    }
+
+
+    .home-intro h2 {
+        font-size: 23px;
+    }
+
+
+    .saint-banner {
+        height: 330px;
+
+        border-radius:
+            17px 17px 0 0;
+    }
+
+
+    .banner-text {
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+    }
+
+
+    .banner-text h1 {
+        font-size: 38px;
+    }
+
+
+    .saint-content {
+        padding: 17px;
+    }
+
+
+    .facts {
+        grid-template-columns: 1fr;
+    }
+
+
+    .two-columns {
+        grid-template-columns: 1fr;
+    }
+
+
+    .bible-header {
+        padding: 27px 18px;
+    }
+
+
+    .bible-header h1 {
+        font-size: 39px;
+    }
+
+
+    .bible-controls {
+        grid-template-columns: 1fr;
+    }
+
+
+    .bible-controls label:first-child,
+    .bible-controls button {
+        grid-column: auto;
+    }
+
+
+    .scripture-top {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+
+    .scripture-top h2 {
+        font-size: 26px;
+    }
+
+
+    .verses {
+        padding: 14px 10px;
+    }
+
+
+    .verse {
+        gap: 8px;
+
+        padding: 8px 5px;
+
+        font-size: 17px;
+    }
+
+
+    .verse-number {
+        flex-basis: 26px;
+    }
+}

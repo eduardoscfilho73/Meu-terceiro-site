@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Portal dos Santos</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- BOTÃO DO MENU NO CELULAR -->
+    <button class="mobile-menu" id="mobileMenu">
+        ☰
+    </button>
+
+
+    <!-- ========================================
+         MENU LATERAL
+    ========================================= -->
+
+    <aside id="sidebar">
+
+        <a href="#" class="brand" id="brandHome">
+
+            <span class="cross">✝</span>
+
+            <div>
+                <b>Portal dos Santos</b>
+                <small>Fé, história e Escritura</small>
+            </div>
+
+        </a>
+
+
+        <div class="side-scroll">
+
+            <p class="side-title">
+                JESUS E OS SANTOS
+            </p>
+
+
+            <!-- JESUS -->
+
+            <button class="saint-btn special"
+                    data-saint="jesus">
+
+                <img src="image.png"
+                     alt="Jesus Cristo">
+
+                <span>
+                    Jesus Cristo
+                    <small>Nosso Senhor e Salvador</small>
+                </span>
+
+            </button>
+
+
+            <!-- SÃO PEDRO -->
+
+            <button class="saint-btn"
+                    data-saint="pedro">
+
+                <img src="sao-pedro.png"
+                     alt="São Pedro">
+
+                <span>
+                    São Pedro
+                    <small>29 de junho</small>
+                </span>
+
+            </button>
+
+
+            <!-- SANTO ANTÔNIO -->
+
+            <button class="saint-btn"
+                    data-saint="antonio">
+
+                <img src="santo-antonio.png"
+                     alt="Santo Antônio">
+
+                <span>
+                    Santo Antônio
+                    <small>13 de junho</small>
+                </span>
+
+            </button>
+
+
+            <!-- SÃO FRANCISCO -->
+
+            <button class="saint-btn"
+                    data-saint="francisco">
+
+                <img src="sao-francisco.png"
+                     alt="São Francisco de Assis">
+
+                <span>
+                    São Francisco
+                    <small>4 de outubro</small>
+                </span>
+
+            </button>
+
+
+            <!-- SÃO PAULO -->
+
+            <button class="saint-btn"
+                    data-saint="paulo">
+
+                <img src="sao-paulo.png"
+                     alt="São Paulo Apóstolo">
+
+                <span>
+                    São Paulo
+                    <small>29 de junho</small>
+                </span>
+
+            </button>
+
+
+            <!-- SANTA RITA -->
+
+            <button class="saint-btn"
+                    data-saint="rita">
+
+                <img src="santa-rita.png"
+                     alt="Santa Rita de Cássia">
+
+                <span>
+                    Santa Rita
+                    <small>22 de maio</small>
+                </span>
+
+            </button>
+
+
+            <!-- BÍBLIA -->
+
+            <button class="bible-side"
+                    id="bibleButton">
+
+                <span class="book-icon">
+                    📖
+                </span>
+
+                <div>
+                    <b>Bíblia Sagrada</b>
+                    <small>
+                        73 livros • Bíblia Católica
+                    </small>
+                </div>
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ========================================
+         CONTEÚDO PRINCIPAL
+    ========================================= -->
+
+    <main>
+
+
+        <!-- CABEÇALHO -->
+
+        <header>
+
+            <span>
+                PORTAL DOS SANTOS
+            </span>
+
+            <button id="homeButton">
+                ⌂ Página inicial
+            </button>
+
+        </header>
+
+
+
+        <!-- ========================================
+             PÁGINA INICIAL
+        ========================================= -->
+
+        <section id="homePage">
+
+            <div class="hero">
+
+                <!--
+                IMPORTANTE:
+                jesus.png = imagem principal
+                da página inicial
+                -->
+
+                <img src="jesus.png"
+                     alt="Jesus Cristo">
+
+
+                <div class="hero-overlay"></div>
+
+
+                <div class="hero-text">
+
+                    <small>
+                        PORTAL DOS SANTOS
+                    </small>
+
+                    <h1>
+                        Uma história de fé
+                    </h1>
+
+                    <p>
+                        Conheça Jesus Cristo, descubra a
+                        história dos santos e mergulhe nas
+                        Sagradas Escrituras.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- FRASE -->
+
+            <div class="reflection">
+
+                <small>
+                    REFLEXÃO
+                </small>
+
+                <p>
+                    “Ter tudo e não ter Cristo
+                    é não ter nada.”
+                </p>
+
+            </div>
+
+
+            <!-- APRESENTAÇÃO -->
+
+            <div class="home-intro">
+
+                <span>✦</span>
+
+                <h2>
+                    Conheça aqueles que viveram pela fé
+                </h2>
+
+                <p>
+                    Explore a vida de Jesus Cristo e a
+                    história de homens e mulheres que
+                    buscaram viver o Evangelho com
+                    fidelidade.
+                </p>
+
+                <p>
+                    Use o menu ao lado para conhecer cada
+                    história ou abra a Bíblia Sagrada para
+                    realizar sua leitura.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================================
+             PÁGINA DE JESUS / SANTOS
+        ========================================= -->
+
+        <section id="saintPage"
+                 class="hidden">
+
+
+            <!-- BANNER -->
+
+            <div class="saint-banner">
+
+                <img id="saintImage"
+                     src=""
+                     alt="">
+
+
+                <div class="banner-overlay"></div>
+
+
+                <div class="banner-text">
+
+                    <small id="saintFeast"></small>
+
+                    <h1 id="saintName"></h1>
+
+                    <p id="saintSubtitle"></p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CONTEÚDO -->
+
+            <div class="saint-content">
+
+
+                <!-- INFORMAÇÕES RÁPIDAS -->
+
+                <div class="facts">
+
+
+                    <div>
+
+                        <small>
+                            NOME
+                        </small>
+
+                        <b id="fullName"></b>
+
+                    </div>
+
+
+                    <div>
+
+                        <small>
+                            NASCIMENTO
+                        </small>
+
+                        <b id="birth"></b>
+
+                    </div>
+
+
+                    <div>
+
+                        <small>
+                            FALECIMENTO
+                        </small>
+
+                        <b id="death"></b>
+
+                    </div>
+
+
+                    <div>
+
+                        <small>
+                            ORIGEM
+                        </small>
+
+                        <b id="origin"></b>
+
+                    </div>
+
+
+                    <div>
+
+                        <small>
+                            FESTA / REFERÊNCIA
+                        </small>
+
+                        <b id="feastInfo"></b>
+
+                    </div>
+
+
+                    <div>
+
+                        <small>
+                            ASSOCIADO A
+                        </small>
+
+                        <b id="patron"></b>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- BIOGRAFIA -->
+
+                <article>
+
+                    <h2>
+                        ✦ Quem é / Quem foi
+                    </h2>
+
+                    <p id="bio"></p>
+
+                </article>
+
+
+
+                <!-- HISTÓRIA -->
+
+                <article>
+
+                    <h2>
+                        ✦ História e missão
+                    </h2>
+
+                    <p id="story"></p>
+
+                </article>
+
+
+
+                <!-- DUAS COLUNAS -->
+
+                <div class="two-columns">
+
+
+                    <article>
+
+                        <h2>
+                            ⚜ Símbolos
+                        </h2>
+
+                        <p id="symbols"></p>
+
+                    </article>
+
+
+                    <article>
+
+                        <h2>
+                            ❤ Importância
+                        </h2>
+
+                        <p id="legacy"></p>
+
+                    </article>
+
+
+                </div>
+
+
+
+                <!-- ORAÇÃO -->
+
+                <div class="prayer">
+
+                    <h2>
+                        ✝ Oração
+                    </h2>
+
+                    <p id="prayer"></p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================================
+             BÍBLIA SAGRADA
+        ========================================= -->
+
+        <section id="biblePage"
+                 class="hidden">
+
+
+            <!-- CABEÇALHO DA BÍBLIA -->
+
+            <div class="bible-header">
+
+                <span class="big-book">
+                    📖
+                </span>
+
+                <small>
+                    SAGRADAS ESCRITURAS
+                </small>
+
+                <h1>
+                    Bíblia Sagrada
+                </h1>
+
+                <p>
+                    Escolha um livro, um capítulo e,
+                    se desejar, um versículo.
+                    O capítulo inteiro aparecerá abaixo
+                    para que a passagem seja lida em seu
+                    contexto.
+                </p>
+
+            </div>
+
+
+
+            <!-- SELETORES -->
+
+            <div class="bible-controls">
+
+
+                <label>
+
+                    Livro
+
+                    <select id="bookSelect"></select>
+
+                </label>
+
+
+
+                <label>
+
+                    Capítulo
+
+                    <select id="chapterSelect"></select>
+
+                </label>
+
+
+
+                <label>
+
+                    Versículo
+
+                    <input
+                        id="verseInput"
+                        type="number"
+                        min="1"
+                        value="1">
+
+                </label>
+
+
+
+                <button id="readBible">
+                    Ler capítulo
+                </button>
+
+
+            </div>
+
+
+
+            <!-- REFERÊNCIA -->
+
+            <div class="reference"
+                 id="reference">
+
+                Escolha sua leitura.
+
+            </div>
+
+
+
+            <!-- LEITOR -->
+
+            <div class="scripture-card">
+
+
+                <div class="scripture-top">
+
+                    <div>
+
+                        <small>
+                            LEITURA
+                        </small>
+
+                        <h2 id="readerTitle">
+                            Bíblia Católica
+                        </h2>
+
+                    </div>
+
+
+                    <span id="loadingState"></span>
+
+                </div>
+
+
+
+                <!--
+                OS VERSÍCULOS SERÃO INSERIDOS
+                AQUI PELO JAVASCRIPT
+                -->
+
+                <div id="verses"
+                     class="verses">
+
+                    <p class="loading">
+                        Escolha um livro e um capítulo
+                        para começar a leitura.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- INFORMAÇÃO -->
+
+            <div class="bible-note">
+
+                <span>✝</span>
+
+                <div>
+
+                    <b>
+                        Bíblia Católica
+                    </b>
+
+                    <p>
+                        O Portal dos Santos utiliza a
+                        estrutura completa dos 73 livros
+                        do cânon católico.
+                    </p>
+
+                    <p>
+                        O texto bíblico é carregado
+                        diretamente no leitor, sem abrir
+                        outra página dentro do site.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
